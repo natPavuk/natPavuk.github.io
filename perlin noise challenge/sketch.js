@@ -13,49 +13,31 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   rectMode(CORNERS);
   background(220);
-  //generateTerrain();
+  generateTerrain();
 }
 
 function generateTerrain() {
   const RECT_WIDTH = width / 1000;
 
 
-  for (let i = 0; i < width / RECT_WIDTH; i++) {
+  for (let i = 0; i < width+posX; i++) {
     rectSettings();
     rectHeight = map(noise(rectTime), 0, 1, 0, height / 2);
 
-    highestPoint.push(rect(i * RECT_WIDTH - posX, height, i * RECT_WIDTH + RECT_WIDTH - posX, rectHeight));
+    rect(i * RECT_WIDTH - posX, height, i * RECT_WIDTH + RECT_WIDTH - posX, rectHeight);
     rectTime += rectSpeed;
-    //if (i < 0) {
-    //if (highestPoint[i] < highestPoint[i - 1]) {
-    // drawFlag();
-    //}
-    //}
-    //}
   }
+
 }
 
 function rectSettings() {
-
   noStroke();
   fill(0);
-
-
-}
-
-function drawFlag() {
-  fill(100);
-  rect();
-  fill(255, 0, 0);
-  triangle(x1, y1, x2, y2, x3, y3);
 }
 
 function draw() {
+  background(220);
   generateTerrain();
+  posX += 0.01;
 }
 
-function keyPressed() {
-  if (keyCode === LEFT_ARROW) {
-    posX -= 5;
-  }
-}
