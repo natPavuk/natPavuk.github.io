@@ -1,9 +1,3 @@
-// Project Title
-// Your Name
-// Date
-//
-// Extra for Experts:
-// - describe what you did to take this project "above and beyond"
 let rectTime = 100;
 let posX = 0;
 let rectSpeed = 0.01;
@@ -36,8 +30,13 @@ function rectSettings() {
 }
 
 function draw() {
+  update();
   background(220);
   generateTerrain();
-  posX += 0.01;
+  
 }
 
+function update(){
+  posX+=0.1;
+  
+}
