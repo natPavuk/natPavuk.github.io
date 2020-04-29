@@ -1,57 +1,41 @@
-// Multi-Coloured Grid
-// Natalia Pavuk
-// February 28th,2020
-//
-// Extra for Experts:
 
 
-//this variable is going to be used as a measurement for square's size
-let gridSpacing; 
-let r;
-let g;
-let b;
-let minR, minG, minB;// minimum value for RGB
-let maxR, maxG, maxB;//maximum value for RGB
-
-
+let movers=[];
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  gridSpacing= width/20;//sets squares to fit all types of screen 
+    for(let i=0; i<300; i++){
+      movers.push(new Mover(random(width), random(height)));
+    }
 }
 
-
-
-//function rectGrid() calculates position of squares based of their size and randomizes fill colour 
-function rectGrid() {
-  sizeChange();
-  for (let y = 0; y < height; y += gridSpacing) {//draws grid by y until y=height
-    for (let x = 0; x < width; x += gridSpacing) {//draws grid by x until x=width
-      if (keyIsPressed === true) {//  new grid colour 
-        fill(r =random(minR=random(10, 90),maxR=random(100,190)),g =random(minG=random(10, 50),maxG=random(700,130)),b =random(minB=random(100,  120),maxB=random(150,220)));
-      }else{
-        fill(random(minR, maxR),random(minG, maxG),random(minB, maxB));
-      }
-      rect(x, y, gridSpacing, gridSpacing);
-    }
+function draw() {
+ 
+  background(0);
+  for(let i=0; i<movers.length; i++){
+    movers[i].move();
+    movers[i].display();
   }
 }
 
-//This function changes size of a square based of which mouse button was pressed
-function sizeChange() {// changes size of the gird's unit  
-  if (mouseIsPressed) {
-    if (mouseButton === LEFT) {// if left mouse button has been clicked, the size of the grid's unit decreases
-      if (gridSpacing >= 1) {
-        gridSpacing = gridSpacing/2;
-      }
-    }
-    if (mouseButton === CENTER) {// if central mouse button has been clicked, the size of the grid's unit increases
-      gridSpacing = gridSpacing*2;
-    }
+
+class Mover {
+  constructor(x, y) {
+    //called once only
+    //when an object is made
+    this.x = x;
+    this.y = y;
+    this.xSpeed = 2;
+    this.ySpeed = 2;
+  }
+  //class functions -all the things na object can do
+  display() {
+    fill(255);
+    ellipse(this.x, this.y, 10, 10);
+  }
+  move(){
+    this.x+=this.xSpeed;
+    this.y+=this.ySpeed;
+    if(this.x<0||this.x>width) this.xSpeed*=-1;
+    if(this.y<0||this.y>height) this.ySpeed*=-1;
   }
 }
-
-function draw() {//adds grid to the screen
-  rectGrid();
-  
-}
-
