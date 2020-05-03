@@ -27,7 +27,7 @@ class particle {
     this.lifetime = int(random(30, 150));
     this.alive = true;
     this.steps = 0;
-    this.rotationSpeed=random(-4,4);
+    this.rotationSpeed = random(-4, 4);
   }
   isAlive() {
     return this.alive;
@@ -41,8 +41,8 @@ class particle {
   }
   display() {
     push();
-    translate(this.pos.x,this.pos.y);
-    scale(map(this.steps,0,this.lifetime,1,0));
+    translate(this.pos.x, this.pos.y);
+    scale(map(this.steps, 0, this.lifetime, 1, 0));
     rotate(radians(this.steps));
     rect(0, 0, this.s, this.s);
     pop();
