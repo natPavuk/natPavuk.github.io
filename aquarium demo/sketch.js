@@ -22,7 +22,7 @@ function draw() {
 
 }
 
-class animatedObject {
+class animatedObject { 
   constructor(x, y) {
     this.x = x;
     this.y = y;
@@ -53,7 +53,7 @@ class animatedObject {
 class circleJob extends animatedObject {
   constructor(x, y, d) {
     super(x, y);
-    this.sie = d
+    this.size = d
   }
   display() {
     strokeWeight(1);

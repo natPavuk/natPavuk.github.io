@@ -50,7 +50,7 @@ class Vehicle {//description for every vehicle
     this.c = color(random(255), random(255), random(255));
     this.type = int(random(2));//randomly selects type of vehicle 
     this.speed = 3;
-    this.decreasing = 0.5;;
+    this.decreasing = 0.5;
     this.accelerating = 1.5;
     this.chanceC;//chance for changing color
     this.chanceD;//chance for slowing down
@@ -116,6 +116,4 @@ class Vehicle {//description for every vehicle
     }
 
   }
-
-
 }
